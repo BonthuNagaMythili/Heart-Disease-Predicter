@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Input </title>
+    <style type="text/css">
+    body{
+        font-family:Zapf Chancery;
+        background-image: url("../static/hsptl.jpg");
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-position:center;
+    }
+
+    .main{
+        background-color:rgb(0,0,0,0.3);
+        width:650px;
+        margin:auto;
+        text-align:center;
+    }
+    form{
+        padding:30px;
+    }
+
+    .sub{
+        padding:22px 0;
+    }
+
+    input,select{
+        width:200px;border:1px solid #000; padding:5px;
+    }
+
+    span {
+         font-size: 1.2; font-weight: bold;
+         display:inline-block;
+     	 width:200px;
+    	 margin-right:30px;
+         text-align:right;
+    }
+
+    .header{
+        padding:20px 0;
+        font-weight:bold;
+        text-align:center;
+        background:rgb(0,0,0,0.3);
+        color:white;
+        width:650px;
+    }
+
+    .result{
+       font-weight:bold;
+       top:0;
+       text-align:center;
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="header">
+                <h1>HEART DISEASE PREDICTOR</h1>
+        </div>
+        <form action={{url_for('output')}}  enctype="multipart/form-data" method="POST" autocomplete="off">
+
+        <p><span>Age</span><input type="number" name="age" required></p>
+
+        <p><span>Gender</span><select name="gender" id="gender" required>
+            <option disabled="disabled" selected="selected">--Choose Option--</option>
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+        </select></p>
+
+
+        <p><span>Old Peak</span><input type="number" name="op" required></p>
+
+        <span>Peak Slope</span><select name="slope" required>
+            <option disabled="disabled" selected="selected">--Choose Option--</option>
+            <option value="0">Down</option>
+            <option value="1">Flat</option>
+            <option value="2">Up</option>
+        </select><br>
+
+        <p><span>ECG Results</span><select name="ecg" required>
+            <option disabled="disabled" selected="selected">--Choose Option--</option>
+            <option value="0">slight</option>
+            <option value="1">Normal</option>
+            <option value="2">Abnormal</option>
+        </select></p>
+
+       <p><span>Chest Pain Type</span><select name="cp" required>
+           <option disabled="disabled" selected="selected">--Choose Option--</option>
+            <option value="0">Aymptomatic Pain</option>
+            <option value="1">Atypical Angina Pain</option>
+            <option value="2">Non-anginal pain</option>
+            <option value="3">Typical Angina Pain</option>
+       </select></p>
+
+       <p><span>Thalassemia Value</span><select name="thal" required>
+            <option disabled="disabled" selected="selected">--Choose Option--</option>
+            <option value="1">Normal</option>
+            <option value="2">Fixed Defect</option>
+            <option value="3">Reverse</option>
+        </select></p>
+
+        <p><span>BP in  Resting State</span><input type="number" name="rbp" required></p>
+
+        <p><span>Cholestoral(mg/dil)</span><input type="number" name="chol" required></p>
+
+        <p><span>Fasting Blood Sugar</span><select name="sugar" required>
+            <option disabled="disabled" selected="selected">--Choose Option--</option>
+        <option value="1">Greater than 120mg/dil</option>
+        <option value="0">Less than 120mg/dl</option>
+        </select></p>
+
+
+
+        <p><span>Maximum heart rate achieved</span><input type="number" name="hr" required></p>
+
+        <p><span>Anigma during exercise</span><select name="exang" required>
+            <option disabled="disabled" selected="selected">--Choose Option--</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select></p>
+
+
+
+       <p><span>Major vessels coloured</span><select name="ca" required>
+            <option disabled="disabled" selected="selected">--Choose Option--</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+       </select></p>
+
+       <div class="sub"><input type="Submit"></div>
+
+    </form>
+    <div class="result"><h1>{{ prediction_text }}</h1></div>
+    </div>
+</body>
+</html>
