@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,initial scale=1.0">
+    <title>Input</title>
+    <style type="text/css">
+        body{
+            font-family:Zapf Chancery;
+            background-image: url("../static/heart.jpg");
+            background-size:cover;
+            background-repeat: no-repeat;
+            background-position:center;
+            padding:80px;
+        }
+        .main{
+            align-items:center;
+            background-color:rgb(0,0,0,0.4);
+            width:970px;
+            justify-content:center;
+            margin:auto;
+            text-align:center;
+            height:100%;
+        }
+        form{
+            padding:30px;
+        }
+        .sub{
+             text-align:center;
+             padding-top:10px;
+        }
+        input{
+            height:20px;
+            width:200px;
+            border:1px solid #000;
+            padding:6px;
+            border-radius:4px;
+        }
+        select{
+            width:215px;
+            border:1px solid #000;
+            padding:6px;
+            border-radius:4px;
+            height:35px;
+        }
+        label{
+	        width:240px;
+	        display:inline-block;
+            text-align:right;
+        }
+        span {
+            font-size: 1.2;
+            font-weight: bold;
+            display:inline-block;
+     	    width:200px;
+    	    margin-right:30px;
+            text-align:right;
+        }
+        .header{
+            padding:10px 0;
+            font-weight:bold;
+            text-align:center;
+            background:rgb(0,0,0,0.7);
+            color:white;
+            width:970px;
+        }
+        .result{
+            font-weight:bold;
+            text-align:center;
+        }
+        .main form .user-details{
+            display:flex;
+            flex-wrap: wrap;
+        }
+        form .button{
+            height:10px;
+        }
+        form .button input{
+            height:30px;
+            width:100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="header"><h1>HEART DISEASE PREDICTOR</h1></div>
+        <form action={{url_for('output')}}  enctype="multipart/form-data" method="POST" autocomplete="off">
+	         <div class="user-details">
+            	<label><span>Age</span></label><input type="number" name="age" required>
+
+                <label><span>Gender</span></label><select name="gender" id="gender" required>
+                    <option disabled="disabled" selected="selected">--Choose Option--</option>
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
+                </select>
+
+                <label><span>Old Peak</span></label><input type="number" name="op" required>
+
+                <label><span>Peak Slope</span></label><select name="slope" required>
+                    <option disabled="disabled" selected="selected">--Choose Option--</option>
+                    <option value="0">Up</option>
+                    <option value="1">Flat</option>
+                    <option value="2">Down</option>
+                </select>
+
+                <label><span>ECG Results</span></label><select name="ecg" required>
+                    <option disabled="disabled" selected="selected">--Choose Option--</option>
+                    <option value="0">Normal</option>
+                    <option value="1">ST-T Wave Abnormality</option>
+                    <option value="2">Left Ventricular Hypethrophy</option>
+                </select>
+
+               <label><span>Chest Pain Type</span></label><select name="cp" required>
+                   <option disabled="disabled" selected="selected">--Choose Option--</option>
+                    <option value="0">Typical Angina Pain</option>
+                    <option value="1">Atypical Angina Pain</option>
+                    <option value="2">Non-anginal pain</option>
+                    <option value="3">Asymptotic Angina Pain</option>
+               </select>
+
+                <label><span>Major vessels coloured</span></label><select name="ca" required>
+                    <option disabled="disabled" selected="selected">--Choose Option--</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+               </select>
+
+               <label><span>Thalassemia Value</span></label><select name="thal" required>
+                    <option disabled="disabled" selected="selected">--Choose Option--</option>
+                    <option value="1">Normal</option>
+                    <option value="2">Fixed Defect</option>
+                    <option value="3">Reverse</option>
+                 </select>
+
+               <label><span>Cholesterol(mg/dil)</span></label><input type="number" name="chol" required>
+
+               <label><span>Fasting Blood Sugar</span></label><select name="sugar" required>
+                    <option disabled="disabled" selected="selected">--Choose Option--</option>
+                    <option value="1">Greater than 120mg/dil</option>
+                    <option value="0">Less than 120mg/dl</option>
+               </select>
+
+               <label><span>Heart rate(max)</span></label><input type="number" name="hr" required>
+
+               <label><span>Anigma during exercise</span></label><select name="exang" required>
+                    <option disabled="disabled" selected="selected">--Choose Option--</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+               </select>
+
+                <label><span>BP in Resting State</span></label><input type="number" name="rbp" required>
+
+             </div>
+	         <div class="button">
+		           <p><input type="submit" value="SUBMIT"></p>
+	         </div>
+         </form>
+        <div class="result"><p><h1>{{ prediction_text }}</h1></p></div>
+    </div>
+</body>
+</html>
