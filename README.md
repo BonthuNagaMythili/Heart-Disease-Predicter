@@ -3,6 +3,8 @@
 2. Using Flask, Values to feed the model are taken from user and the prediction is displayed.
 3. Tested by deploying it on HEROKU Cloud Platform
 
+# Link : https://predicter-heart-disease.herokuapp.com/
+
 
 # Screenshots
 ![1](https://user-images.githubusercontent.com/75924276/131649303-a1d939b8-2039-44aa-b2bf-aeb2b870939d.jpg)
